@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 
 
-const DashCard = ({title, apiEndPoint}) => {
+const DashCard = ({title, apiEndPoint, header_1, header_2}) => {
 
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -72,17 +72,25 @@ const DashCard = ({title, apiEndPoint}) => {
                 ) : (
                <div className='flex flex-col'>
                 <div className='flex justify-between'>
-                  <p className='mb-5 font-bold'>Name</p>
-                  <p className='mb-5 font-bold'>Email</p>
+                  <p className='mb-5 font-bold'>{header_1}</p>
+                  <p className='mb-5 font-bold'>{header_2}</p>
                 </div>
 
                   {
                     
                     data.map((d)=>(
-                      <div className='flex justify-between'>
+                      <div key={d.id} className='flex justify-between '>
+                        <div className='w-[30%] overflow-ellipsis gap-5 flex flex-col'>
+                            <p >{d.id}. {d.name}</p>
 
-                      <p key={d.id}>{d.name}</p>
+                        </div>
+
+                        <div className='text-start w-[65%] gap-5 flex flex-col'>
+
                       <p>{d.email}</p>
+                      <p className='-mt-4' >{d.description}</p>
+                        </div>
+                      {/* <p>{d.email}</p> */}
                       </div>
                     ))
                   }
