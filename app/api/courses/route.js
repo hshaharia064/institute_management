@@ -28,6 +28,13 @@ export async function POST(request){
         const body = await request.json()
         const {name, description} = body
 
+        if(name.length ===0 || description.length ===0){
+            return NextResponse.json(
+                {message : 'Fields can not be empty'},
+                {status : 404}
+            )
+        }
+
         const [result] = await pool.query('INSERT INTO courses (name, description) VALUES (name, description)', [name, description])
 
         return NextResponse.json(
