@@ -59,12 +59,12 @@ const DashCard = ({title, apiEndPoint, header_1, header_2}) => {
 
   return (
 
-    <div className='h-72 border border-gray-400/30 rounded-2xl bg-gray-800 p-5 overflow-hidden'>
-                <p className='text-xl font-semibold'>{title}</p>
+    <div className='h-72 border border-gray-400/30 rounded-2xl bg-gray-800/50 p-5 overflow-hidden'>
+                <p className='text-xl font-semibold mb-5'>{title}</p>
 
                 <div className='h-52 p-5 w-full overflow-y-scroll border bg-gray-950 border-gray-700/40 rounded-2xl'>
                 {loading ? (
-                  <span className='animate-pulse'>Loading.....</span>
+                  <span className='animate-pulse text-3xl'>Loading.....</span>
                 ) : error ? (
                   <div className='text-red-500/50'>Error : {error}</div>
                 ) : data.length == 0 ?  (
@@ -79,7 +79,7 @@ const DashCard = ({title, apiEndPoint, header_1, header_2}) => {
                   {
                     
                     data.map((d)=>(
-                      <div key={d.id} className='flex justify-between '>
+                      <div key={d.id} className='flex justify-between bg-gray-500/20 px-3 rounded-xl mb-5 py-3 '>
                         <div className='w-[30%] overflow-ellipsis gap-5 flex flex-col'>
                             <p >{d.id}. {d.name}</p>
 
@@ -90,7 +90,7 @@ const DashCard = ({title, apiEndPoint, header_1, header_2}) => {
                       <p>{d.email}</p>
                       <p className='-mt-4' >{d.description}</p>
                         </div>
-                      {/* <p>{d.email}</p> */}
+                      {/* <p>{d.email}</p> */} 
                       </div>
                     ))
                   }

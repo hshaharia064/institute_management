@@ -24,3 +24,31 @@ export async function GET(){
 }
 
 
+
+
+export async function POST(request){
+    try{
+        const body = await request.json()
+        const {name, email, age} = body
+        // const ageInt = parseInt(age)
+
+        const [result] = await pool.query('INSERT INTO users (name, email, age) VALUES (?, ?, ?)', [name, email, age])
+
+        return NextResponse.json(
+            {message : 'student added'},
+            {status : 200}
+        )
+
+
+
+    }catch(error){
+        return NextResponse.json(
+            {message : 'Failed to add data'},
+            {status : 500}
+        )
+
+
+    }
+}
+
+

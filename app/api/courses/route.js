@@ -19,3 +19,30 @@ export async function GET(){
 
     }
 }
+
+
+
+
+export async function POST(request){
+    try{
+        const body = await request.json()
+        const {name, description} = body
+
+        const [result] = await pool.query('INSERT INTO courses (name, description) VALUES (name, description)', [name, description])
+
+        return NextResponse.json(
+            {message : 'Course added successfully'},
+            {status : 200}
+        )
+
+
+        }catch(error){
+
+        return NextResponse.json(
+            {message : 'Unable to add course'},
+            {status : 500}
+        )
+
+    }
+
+    }
