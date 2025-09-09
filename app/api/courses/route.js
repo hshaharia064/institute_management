@@ -35,7 +35,7 @@ export async function POST(request){
             )
         }
 
-        const [result] = await pool.query('INSERT INTO courses (name, description) VALUES (name, description)', [name, description])
+        const [result] = await pool.query('INSERT INTO courses (name, description) VALUES (?, ?)', [name, description])
 
         return NextResponse.json(
             {message : 'Course added successfully'},
