@@ -26,7 +26,7 @@ export async function GET(){
 export async function POST(request){
     try{
         const body = await request.json()
-        const {name, description} = body
+        const {name, description, teacher_id} = body
 
         if(name.length ===0 || description.length ===0){
             return NextResponse.json(
@@ -35,7 +35,7 @@ export async function POST(request){
             )
         }
 
-        const [result] = await pool.query('INSERT INTO courses (name, description) VALUES (?, ?)', [name, description])
+        const [result] = await pool.query('INSERT INTO courses (name, description, teacher_id) VALUES (?, ?, ?)', [name, description, teacher_id])
 
         return NextResponse.json(
             {message : 'Course added successfully'},

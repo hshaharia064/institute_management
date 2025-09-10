@@ -17,5 +17,6 @@ export const teacherField = [
 
 export const courseField = [
     {name : 'name', label : 'Name', type : 'text'},
-    {name : 'description', label : 'Description', type : 'textarea'}
+    {name : 'description', label : 'Description', type : 'textarea'},
+    {name : 'teacher_id' , label : 'Teacher id' , type : 'number'}
 ]

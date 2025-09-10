@@ -67,7 +67,7 @@ const DisplayData = ({title, fields, apiEndPoint}) => {
  
 
   return (
-    <div className='min-w-[70%]  bg-amber-900/30 rounded-2xl px-5 py-5'>
+    <div className='min-w-[70%]   rounded-2xl px-5 py-5'>
           <div className='text-center'>
                   <p className='text-2xl font-semibold'>{title}</p>
                   <div>
@@ -76,7 +76,7 @@ const DisplayData = ({title, fields, apiEndPoint}) => {
 
                                             <div key={field.name} className='pt-5'>
 
-                                                    <label className='mb-3 mr-4'>{field.label}</label>
+                                                    <label className=' mr-4'>{field.label}</label>
                                                     
                                                     {field.type === 'textarea' ? (
                                                       <textarea 
@@ -85,13 +85,14 @@ const DisplayData = ({title, fields, apiEndPoint}) => {
                                                                 onChange={handleChange}
                                                                 className='p-2 rounded w-96 outline-0 bg-gray-700 mb-5 border border-gray-600'></textarea>
                                                     ) : 
+                                                    // field.type == 'text' || 'number' || 'email' ? 
                                                     (
                                                       <input type={field.type}
                                                               name={field.name}
                                                               value={formData[field.name] || ''}
                                                               onChange={handleChange}
                                                               className='p-2 rounded w-96 outline-0 bg-gray-700 mb-5 border border-gray-600' />
-                                                    )}
+                                                    )  }
                                             </div>
 
                                   ))}

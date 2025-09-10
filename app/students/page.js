@@ -14,7 +14,7 @@ const students = () => {
 
     
     
-                <div className=' w-[75%] rounded-2xl ml-auto min-h-20  flex items-center justify-center py-10  px-10 bg-gray-800/50'>
+                <div className='border border-gray-400/30 w-[75%] rounded-2xl ml-auto min-h-20  flex items-center justify-center py-10  px-10 bg-gray-800/50'>
 
 
                     <DisplayData title={'Enroll students'} fields={studentField} apiEndPoint={'api/students'}/>
