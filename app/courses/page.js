@@ -20,7 +20,7 @@ const courses = () => {
 
       <div className='w-[75%] mt-10 ml-auto'>
 
-       <DashCard title={'Courses : '} apiEndPoint={'/api/courses'} header_1={'Name'} header_2={'Description'} header_3={'Teacher id'}/>
+       <DashCard title={'Courses : '} apiEndPoint={'/api/courses'} header_1={'Name'} header_2={'Description'} header_3={'Teacher name'}/>
       </div>
 
     </div>

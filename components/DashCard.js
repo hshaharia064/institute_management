@@ -91,7 +91,7 @@ const DashCard = ({title, apiEndPoint, header_1, header_2, header_3}) => {
                       <p>{d.email}</p>
                       <p className='-mt-4 break-all' >{d.description}</p>
                         </div>
-                      <p>{d.teacher_id}</p> 
+                      <p className='whitespace-nowrap'>{d.teacher_name}</p> 
                       </div>
                     ))
                   }

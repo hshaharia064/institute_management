@@ -4,7 +4,22 @@ import { NextResponse } from "next/server";
 
 export async function GET(){
     try{
-    const [rows] = await pool.execute('SELECT * FROM courses')
+    const [rows] = await pool.query(`
+        
+    SELECT 
+    courses.id AS id,
+    courses.name AS name,
+    courses.description,
+    teachers.id AS teacher_id,
+    teachers.name AS teacher_name
+    
+    FROM courses
+    JOIN teachers ON courses.teacher_id = teachers.id
+
+        
+        
+    `
+    )
     console.log('courses data fetched', rows.length);
     return NextResponse.json(rows, {status : 200})
     
