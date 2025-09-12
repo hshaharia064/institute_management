@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import DeleteButton from './DeleteButton';
 
 
 
@@ -81,17 +82,25 @@ const DashCard = ({title, apiEndPoint, header_1, header_2, header_3}) => {
                     
                     data.map((d)=>(
                       <div key={d.id} className='flex justify-between bg-cyan-700/20 px-3 rounded-xl mb-5 py-3 '>
-                        <div className='w-[30%] overflow-ellipsis gap-5 flex flex-col'>
-                            <p >{d.id}. {d.name}</p>
+                                  <div className='w-[30%] overflow-ellipsis gap-5 flex flex-col'>
+                                         <p >{d.id}. {d.name}</p>
 
-                        </div>
+                                  </div>
 
-                        <div className='text-start w-[65%] gap-5 flex flex-col'>
+                                  <div className='text-start w-[65%] gap-5 flex flex-col'>
 
-                      <p>{d.email}</p>
-                      <p className='-mt-4 break-all' >{d.description}</p>
-                        </div>
-                      <p className='whitespace-nowrap'>{d.teacher_name}</p> 
+                                            <p>{d.email}</p>
+                                            <p className='-mt-4 break-all' >{d.description}</p>
+                                  </div>
+
+                                <p className='whitespace-nowrap'>{d.teacher_name}</p> 
+
+                                <div>
+                                  <DeleteButton DeleteApi={`${apiEndPoint}/${d.id}`} id={d.id} onSuccess={(deletedId)=> 
+                                                                                                            {setData((prevData)=>
+                                                                                                                prevData.filter(item => item.id !== deletedId))}}/>
+                                  
+                                </div>
                       </div>
                     ))
                   }
