@@ -44,3 +44,43 @@ export async function DELETE(request, {params}){
 
 
 }
+
+
+
+
+
+export async function PUT(request, {params}){
+    const {id} = params
+
+    try{
+
+        const body = await request.json()
+        const {name, email, age} = body
+
+            const [result] = await pool.execute('UPDATE users SET name=?, email=?, age=? WHERE id=? ', [name, email, age, id])
+
+            if(result.affectedRows===0){
+                return NextResponse.json(
+                    {message : 'Student can not be updated'},
+                    {status : 404}
+                )
+            }
+
+
+            return NextResponse.json(
+                {message : 'Student edited successfully'},
+                {status : 200}
+            )
+
+
+    }catch(error){
+        console.error('Error while updating the student')
+
+        return NextResponse.json(
+            {message : 'Error occured while updating the student'},
+            {status : 500}
+        )
+
+
+    }
+}

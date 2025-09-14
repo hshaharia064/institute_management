@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import DeleteButton from './DeleteButton';
+import EditButton from './EditButton';
 
 
 
@@ -99,6 +100,9 @@ const DashCard = ({title, apiEndPoint, header_1, header_2, header_3}) => {
                                   <DeleteButton DeleteApi={`${apiEndPoint}/${d.id}`} id={d.id} onSuccess={(deletedId)=> 
                                                                                                             {setData((prevData)=>
                                                                                                                 prevData.filter(item => item.id !== deletedId))}}/>
+                                    <EditButton editApi={`${apiEndPoint}/${d.id}`} id={d.id} initialData={d} onSuccess={(id, body)=>{
+                                                                                                                    setStudents((prev)=> prev.map((s)=>(s.id===id ? {...s, ...FormData} : s)))
+                                                                                                                      }}/>
                                   
                                 </div>
                       </div>
