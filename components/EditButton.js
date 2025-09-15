@@ -1,5 +1,5 @@
 
-
+'use client'
 import React, { useState } from 'react'
 
 const EditButton = ({editApi, id, initialData, onSuccess}) => {
@@ -21,6 +21,7 @@ const handleSubmit = async(e)=>{
 
 
     try{
+        
         const response = await fetch(editApi,{
             method : 'PUT',
             headers :{
@@ -60,7 +61,7 @@ const handleSubmit = async(e)=>{
   return (
     <div>
 
-            <button className='px-4 py-2 rounded-2xl bg-cyan-500/40 text-cyan-500'
+            <button  className="px-3 py-1 rounded bg-cyan-500/40 text-cyan-500 disabled:opacity-50"
                     onClick={()=>setIsOpen(true)}>Edit</button>
 
 
